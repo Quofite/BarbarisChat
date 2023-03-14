@@ -1,0 +1,15 @@
+/AndroidApp/.gradle
+/AndroidApp/.idea
+/AndroidApp/gradle
+/AndroidApp/gradlew
+/AndroidApp/gradlew.bat
+/AndroidApp/.gitignore
+/AndroidApp/local.properties
+
+/AndroidApp/app/libs
+/AndroidApp/app/.gitignore
+/AndroidApp/app/build.gradle
+/AndroidApp/app/proguard-rules.pro
+
+/AndroidApp/app/src/androidTest
+/AndroidApp/app/src/test
