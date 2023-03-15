@@ -13,3 +13,10 @@
 
 /AndroidApp/app/src/androidTest
 /AndroidApp/app/src/test
+/AndriodApp/app/src/main/java/com/barbaris/chat/models/DatabaseModel.java
+
+/API/.mvn
+/API/mvnw
+/API/mvnw.cmd
+/API/src/test
+/API/src/main/resources/application.properties
