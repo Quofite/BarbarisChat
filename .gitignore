@@ -20,3 +20,8 @@
 /API/mvnw.cmd
 /API/src/test
 /API/src/main/resources/application.properties
+
+/Server/.idea
+/Server/target
+/Server/src/test
+/Server/src/main/resources
