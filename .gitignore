@@ -18,6 +18,8 @@
 /API/.mvn
 /API/mvnw
 /API/mvnw.cmd
+/API/.idea
+/API/target
 /API/src/test
 /API/src/main/resources/application.properties
 
