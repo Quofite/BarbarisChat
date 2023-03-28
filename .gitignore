@@ -23,6 +23,14 @@
 /API/src/test
 /API/src/main/resources/application.properties
 
+/Site/.mvn
+/Site/mvnw
+/Site/mvnw.cmd
+/Site/.idea
+/Site/target
+/Site/src/test
+/Site/src/main/resources/application.properties
+
 /Server/.idea
 /Server/target
 /Server/src/test

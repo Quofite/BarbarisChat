@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.barbaris.chat.models.APIDataModel;
 import com.barbaris.chat.models.UserModel;
 import com.google.gson.Gson;
 
@@ -16,7 +15,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.Socket;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         String pass = passBox.getText().toString();
 
         try {
-            URL apiHost = new URL(APIDataModel.getHost() + "/login");
+            URL apiHost = new URL("http://192.168.100.5:8888/login");
             HttpURLConnection connection = (HttpURLConnection) apiHost.openConnection();
 
             Thread thread = new Thread(() -> {
@@ -89,7 +87,9 @@ public class MainActivity extends AppCompatActivity {
             });
 
             thread.start();
-        } catch (Exception ignored) {}
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }
 

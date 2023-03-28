@@ -16,6 +16,8 @@ public class Server {
             while (true) {
                 Socket socket = server.accept();
                 serversList.add(new ServerListener(socket));
+                System.out.println(socket + " socket channel");
+                System.out.println("servers list - " + serversList);
             }
         } finally {
             server.close();

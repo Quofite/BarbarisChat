@@ -21,9 +21,11 @@ public class MainController {
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody UserModel user) {
         if(user != null) {
-            if(service.logUser(user).equals("OK")) {
+            String response = service.logUser(user);
+
+            if(response.equals("OK")) {
                 return new ResponseEntity<>(HttpStatus.OK);
-            } else if (service.logUser(user).equals("Not found")) {
+            } else if (response.equals("Not found")) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             } else {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -36,8 +38,12 @@ public class MainController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody UserModel user) {
         if(user != null) {
-            if(service.regUser(user).equals("OK")) {
+            String response = service.regUser(user);
+
+            if(response.equals("OK")) {
                 return new ResponseEntity<>(HttpStatus.CREATED);
+            } else if(response.equals("Login is already taken")) {
+                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             } else {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

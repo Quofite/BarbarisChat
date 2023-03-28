@@ -93,20 +93,30 @@ public class ClientListener {
     }
 
     public void writeMessage(String message) {
-        String time = new SimpleDateFormat("HH:mm:ss").format(new Date());
-
         try {
-            if(message.equals("ClientDownCode")) {
-                writer.write("ClientDownCode" + "'\n");
-                ClientListener.this.downClient();
-            } else {
-                writer.write(String.format("(%s) %s: %s", time, login, message));
-            }
+            String time = new SimpleDateFormat("HH:mm:ss").format(new Date());
 
-            writer.flush();
-        } catch (IOException ex) {
-            ClientListener.this.downClient();
+            Thread thread = new Thread(() -> {
+                try {
+                    if(message.equals("ClientDownCode")) {
+                        writer.write("ClientDownCode" + "'\n");
+                        ClientListener.this.downClient();
+                    } else {
+                        writer.write(String.format("(%s) %s: %s", time, login, message));
+                    }
+
+                    writer.flush();
+                } catch (IOException ex) {
+                    ClientListener.this.downClient();
+                }
+            });
+
+            thread.start();
+            Thread.sleep(400);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
+
     }
 }
 

@@ -19,7 +19,19 @@ public class UserService implements IUserModel {
         String login = user.getLogin();
         String password = user.getPassword();
 
-        String sql = String.format("INSERT INTO chatusers (login, pass) VALUES ('%s', '%s');", login, password);
+        String sql = String.format("SELECT * FROM chatusers WHERE login='%s';", login);
+        try {
+            List<Map<String, Object>> rows = template.queryForList(sql);
+
+            if(rows.size() > 0) {
+                return "Login is already taken";
+            }
+
+        } catch (Exception ex) {
+            return "DB Error";
+        }
+
+        sql = String.format("INSERT INTO chatusers (login, pass) VALUES ('%s', '%s');", login, password);
         try {
             template.execute(sql);
         } catch (Exception ex) {

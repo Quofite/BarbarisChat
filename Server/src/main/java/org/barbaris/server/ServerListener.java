@@ -3,7 +3,7 @@ package org.barbaris.server;
 import java.io.*;
 import java.net.Socket;
 
-public class ServerListener extends Thread{
+public class ServerListener extends Thread {
     private Socket socket;
     private BufferedReader reader;
     private BufferedWriter writer;
@@ -11,12 +11,17 @@ public class ServerListener extends Thread{
     public ServerListener(Socket socket) {
         this.socket = socket;
 
+        System.out.println("Server Listener constructor - socket added " + socket);
+
         try {
             reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         } catch (IOException ex) {
             System.out.println("Socket init fail");
         }
+
+        this.sendMessage("you were successfully connected");
+        this.start();
     }
 
     @Override
@@ -31,6 +36,8 @@ public class ServerListener extends Thread{
                     this.downClient();
                     break;
                 }
+
+                System.out.println(message + " message");
 
                 for (ServerListener server: Server.serversList) {
                     server.sendMessage(message);

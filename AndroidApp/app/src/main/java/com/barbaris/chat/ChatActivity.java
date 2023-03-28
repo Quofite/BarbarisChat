@@ -7,17 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.barbaris.chat.models.TestClass;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.net.Socket;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class ChatActivity extends AppCompatActivity {
     private ClientListener client;
-    public static String ip = "localhost";
+    public static String ip = "192.168.100.5";
     public static int port = 8080;
 
     @Override
